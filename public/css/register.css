@@ -1,0 +1,59 @@
+.ac-layout form input,
+.ac-layout .multiple-form-group {
+    max-width: 450px;
+}
+
+.before-login .alert {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1279px) {
+    .alert {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+.alert-danger {
+    background: rgba(250, 20, 20, 0.1);
+}
+
+.alert {
+    position: relative;
+    padding: 15px 40px 15px 55px;
+    background: rgba(40, 175, 125, 0.1);
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.multiple-form-group {
+    display: flex;
+    justify-content: space-between;
+}
+.multiple-form-group .form-group {
+    flex: 0 0 48%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+.form-group label {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 5px;
+    display: block;
+}
+.form-group label::after {
+    content: " *";
+    color: red;
+    font-weight: normal;
+}
+.form-group input {
+    max-width: 450px;
+}
+.form-group input[type=radio],
+.form-group input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+}

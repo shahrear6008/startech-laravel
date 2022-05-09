@@ -1,0 +1,102 @@
+.container .panel {
+  max-width: 400px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container .panel .p-head h2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 15px 0;
+}
+
+.container .panel .p-body {
+  color: black;
+  margin-top: 30px;
+  width: 400px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.container .panel .p-body .form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.container .panel .p-body .form-group .forgot-password {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 13px;
+}
+
+.container .panel .p-body label {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.container .panel .p-body label span {
+  font-size: 12px;
+  color: orangered;
+}
+
+.container .panel .p-body p {
+  text-align: center;
+  margin: 25px 0 35px;
+  border-bottom: 1px solid #eee;
+  height: 11px;
+}
+
+.container .panel .p-body p span {
+  background: #f6faff;
+  padding: 0 10px;
+  color: #000000;
+}
+
+.container .panel .p-body .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background: #3749bb;
+  width: 100%;
+  height: 42px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.container .panel .p-body .btn:hover {
+  background: none;
+  color: black;
+  border: 1px solid #3749bb;
+}
+
+.container .panel .p-body .st-outline {
+  color: #3749bb;
+  background: none;
+  border: 1px solid #3749bb;
+}
+
+.container .panel .p-body .st-outline:hover {
+  background: #3749bb;
+  color: white;
+  border: 1px solid #3749bb;
+}
+/*# sourceMappingURL=sign_in.css.map */

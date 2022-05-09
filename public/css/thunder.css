@@ -1,0 +1,39 @@
+.thunder_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.thunder_area .thunder_section {
+  text-align: center;
+  background: white;
+  margin: 20px 0;
+  padding: 15px 0;
+  border-radius: 5px;
+}
+
+.thunder_area .thunder_section h4 {
+  font-size: 16px;
+  padding: 40px 0;
+}
+
+.thunder_area .thunder_section .eye {
+  margin: 0 auto;
+  border-radius: 30px;
+  max-width: 310px;
+  background: #ff7b00;
+  font-size: 16px;
+}
+
+.thunder_area .thunder_section .eye h5 {
+  color: white;
+  padding: 15px 10px;
+}
+/*# sourceMappingURL=thunder.css.map */

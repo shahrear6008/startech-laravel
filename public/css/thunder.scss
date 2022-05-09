@@ -1,0 +1,30 @@
+.thunder_area {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .thunder_section {
+    text-align: center;
+
+    background: white;
+    margin: 20px 0;
+    padding: 15px 0;
+    border-radius: 5px;
+    h4 {
+      font-size: 16px;
+      padding: 40px 0;
+    }
+    .eye {
+      margin: 0 auto;
+      border-radius: 30px;
+      max-width: 310px;
+      background: rgb(255, 123, 0);
+      font-size: 16px;
+      h5 {
+        color: white;
+        padding: 15px 10px;
+      }
+    }
+  }
+}

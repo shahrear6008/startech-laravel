@@ -19,7 +19,7 @@
                     <label for="input-username">Enter Your Phone / E-Mail</label>
                     <input type="text" name="username" value="" placeholder="Enter Your Phone / E-Mail" id="input-username" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary">Continue</button>
+                <button type="submit" class="btn btn-primary">Continue </button>
             </form>
         </div>
     </div>

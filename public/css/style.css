@@ -852,7 +852,6 @@ footer .container .sub_footer p a:hover {
     height: auto;
     overflow: visible;
     max-width: calc(100% - 25px);
-    right: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2), -1px 0 0 0 rgba(255, 255, 255, 0.2);
 }
 

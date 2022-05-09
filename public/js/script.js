@@ -225,5 +225,3 @@ $(document).ready(function(){
 });
 
 
-Php APIs Web Applications/Sites + mysql.
-Please discuss work before order Thanks

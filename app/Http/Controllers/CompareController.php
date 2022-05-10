@@ -32,11 +32,14 @@ class CompareController extends Controller
 
          $compare = [
                  $id => [
-                     "name" => $products->product_name,
-                     "quantity" => 1,
-                     "price" => $products->product_price,
-                     "image" => $products->product_image,
-                     "model" => $products->product_model
+                    "name" => $products->product_name,
+                    "quantity" => 1,
+                    "price" => $products->product_price,
+                    "image" => $products->product_image,
+                    "model" => $products->product_model,
+                    "brand" => $products->product_brand,
+                    "Availability" => $products->product_availability,
+                    "weight" => $products->product_weight,
                  ]
          ];
 
@@ -60,7 +63,11 @@ class CompareController extends Controller
          "quantity" => 1,
          "price" => $products->product_price,
          "image" => $products->product_image,
-         "model" => $products->product_model
+         "model" => $products->product_model,
+        "brand" => $products->product_brand,
+        "Availability" => $products->product_availability,
+        "weight" => $products->product_weight,
+
      ];
 
      session()->put('compare', $compare); // this code put product of choose in cart

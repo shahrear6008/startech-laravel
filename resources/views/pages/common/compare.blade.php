@@ -24,7 +24,7 @@
         
   
                        
-         
+       @foreach(session('compare') as $id => $row)   
           <td class="value">
             <div class="compare-item-wrapper">
               <div class="cmpr-field">
@@ -34,7 +34,9 @@
                 <ul class="dropdown-menu"></ul>
                 <input type="hidden" class="prod-id" value="15213">
               </div>
- @foreach(session('compare') as $id => $row) 
+
+
+ 
               <div class="p-item-img">
                 <img src="{{$row['image']}} " alt="Gudsen MOZA Mini MX 3-Axis Gimbal Handheld Stabilizer for Smartphone" title="Gudsen MOZA Mini MX 3-Axis Gimbal Handheld Stabilizer for Smartphone" class="img-thumbnail" width="228" height="228">
               </div>
@@ -49,21 +51,10 @@
 											   		Remove
 													</a>
 							</button>
-               @endforeach    
+              
             </div>
           </td>
-           
-          <td class="value">
-            <div class="compare-item-wrapper">
-              <div class="cmpr-field">
-          
-                <i class="material-icons">search</i>
-                <input id="com_search" class="cmpr-product" type="com_search" name="com_search" placeholder="Search and Select Product" autocomplete="off">
-                <ul class="dropdown-menu"></ul>
-                <input type="hidden" class="prod-id" value="15213">
-              </div>
-              </div>
-          </td>
+             @endforeach   
         </tr>
        
         <tr>
@@ -76,7 +67,7 @@
           <td class="name">Brand</td>
                   
           @foreach(session('compare') as $id => $row) 
-          <td class="value"> {{$row['model']}} </td>
+          <td class="value"> {{$row['brand']}} </td>
          @endforeach 
          
         </tr>
@@ -84,7 +75,7 @@
           <td class="name">Availability</td>
            
           @foreach(session('compare') as $id => $row) 
-          <td class="value"> {{$row['model']}} </td>
+          <td class="value"> {{$row['Availability']}} </td>
          @endforeach 
       
          
@@ -132,7 +123,7 @@
         <tr>
           <td class="name">Weight</td>
           @foreach(session('compare') as $id => $row) 
-          <td class="value"> {{$row['model']}}kG </td>
+          <td class="value"> {{$row['weight']}}kG </td>
          @endforeach 
          
         

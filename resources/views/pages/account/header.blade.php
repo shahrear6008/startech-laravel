@@ -20,16 +20,16 @@
  <div class="ac-header">
     <div class="left">
       <span class="avatar"><img src="{{asset($row->profile_picture)}}" width="80" height="80" alt="SR"></span>
-      <div class="name"><p></p><p class="user"></p></div>
+      <div class="name"><p>hello,</p><p class="user">{{$row->fname}} {{$row->lname}}</p></div>
     </div>
     <div class="right">
       <div class="balance">
         <span class="blurb">Star Points</span>
-        <span class="amount">0</span>
+        <span class="amount">{{$row->Reward_Points}}</span>
       </div>
       <div class="balance">
         <span class="blurb">Store Credit</span>
-        <span class="amount">0</span>
+        <span class="amount">{{$row->Store_Credit}}</span>
       </div>
     </div>
 </div>

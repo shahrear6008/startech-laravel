@@ -25,7 +25,7 @@
       <button type="button" class="close material-icons" data-dismiss="alert">close</button>
     </div>
     <h1 class="page-title">Checkout</h1>
-    <form class="checkout-content" id="checkout-form" action="checkout_process" method="post">
+    <form class="checkout-content" id="checkout-form" action="{{url('checkout_process')}}" method="post">
     @csrf
       <div class="row">
         <div class="col-md-12">

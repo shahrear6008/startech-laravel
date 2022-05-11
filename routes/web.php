@@ -221,7 +221,7 @@ Route::delete('remove-from-cart ',[ProductController::class,'remove']);
 Route::get('search/{str}',[ProductController::class,'search']);
 Route::get('common',[ProductController::class,'compare_search']);
 Route::get('checkout',[ProductController::class,'checkout']);
-Route::post('checkout_process',[ProductController::class,'checkout_process']);
+Route::post('checkout_process',[UserController::class,'checkout_process']);
 
 
 

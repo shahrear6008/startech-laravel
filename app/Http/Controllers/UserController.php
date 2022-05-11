@@ -213,7 +213,7 @@ class UserController extends Controller
         $orders =DB::table('orders') 
         ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid') 
         ->where('uid','=', $uid) 
-        ->select('producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
+        ->select('producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.pid','orders.status')   
          ->get(); 
 
          $customer_info=DB::table('users')  
@@ -231,8 +231,7 @@ class UserController extends Controller
         $uid=session()->get('USER_ID');
         $order_info =DB::table('orders') 
         ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid')      
-        ->where('producttb.id','=','orders.pid') 
-        ->where('orders.pid','=', $id) 
+        ->where('pid','=', $id) 
         ->select('producttb.id','producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
         ->get(); 
 
@@ -249,19 +248,30 @@ class UserController extends Controller
     public function checkout_process(Request $request){
        
         $request->validate([
-            'title' => 'required|max:55',
-            'price' => 'required',
-            'category' => 'required'
+            'fristname' => 'required|max:55',
+            'lastname' => 'required',
+            'address' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'city' => 'required',
+            'zone' => 'required',
+            'comment' => 'required'
         ]);
 
 
 
-        Product::insert([
+        Checkout::insert([
           
-            'title' => $request->title,
-            'price' => $request->price,
-            'category' => $request->category,
-            'description' => $request->description
+            'f_name' => $request->fristname,
+            'l_name' => $request->lastname,
+            'address_1' => $request->address,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'city' => $request->city,
+            'zone' => $request->zone,
+            'comment' => $request->comment,
+            'payment_method' => $request->payment_method,
+            'shipping_method' => $request->shipping_method
         ]);
 
 

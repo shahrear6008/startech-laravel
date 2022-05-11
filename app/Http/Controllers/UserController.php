@@ -213,7 +213,6 @@ class UserController extends Controller
         $orders =DB::table('orders') 
         ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid') 
         ->where('uid','=', $uid) 
-        ->distinct()
         ->select('producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
          ->get(); 
 
@@ -224,6 +223,26 @@ class UserController extends Controller
         }else{
             return redirect('login');
           }
+
+         
+    }
+      public function order_info($id){
+        if(session()->has('loggedin')){
+        $uid=session()->get('USER_ID');
+        $order_info =DB::table('orders') 
+        ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid')      
+        ->where('producttb.id','=','orders.pid') 
+        ->where('orders.pid','=', $id) 
+        ->select('producttb.id','producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
+        ->get(); 
+
+         $customer_info=DB::table('users')  
+         ->where(['id'=>  $uid])
+         ->get(); 
+        return view('pages.account.order_info',compact('order_info','customer_info'));
+        }else{
+              return redirect('login');
+             }
 
          
     }

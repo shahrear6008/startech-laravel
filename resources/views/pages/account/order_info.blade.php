@@ -20,7 +20,7 @@
 </section>
 
 
-
+@foreach($order_info as $row)
 <section class="info-page bg-bt-gray">
     <div class="container ac-layout p-tb-15">
         <div class="row">
@@ -28,7 +28,7 @@
                 <div class="ws-box content order-details">
                     <div class="head">
                         <h1>Order Information</h1>
-                        <span class="status"><?php echo $prodrow['orderstatus']; ?></span>
+                        <span class="status">{{$row->status}}</span>
                     </div>
                     <div class="g-box">
                         <div class="row">
@@ -44,7 +44,7 @@
                                     <tr>
                                         <td class="text-left">Sub-Total</td>
                                         <td class="text-right">
-                                         <?php echo $prodrow['product_price'];?>৳
+                                         {{$row->product_price}}৳
                                         </td>
                                     </tr>
                                     <tr>
@@ -54,7 +54,7 @@
                                     <tr>
                                         <td class="text-left">Total</td>
                                         <td class="text-right">
-                                           <?php echo $prodrow['product_price']+60;?>৳
+                                           {{$row->product_price}}+60 ৳
                                         </td>
                                     </tr>
                                     <tr class="paid">
@@ -64,7 +64,7 @@
                                     <tr class="due">
                                         <td class="text-left">Due</td>
                                         <td class="text-right">
-                                           <?php echo $prodrow['product_price']+60;?>৳
+                                          {{$row->product_price }}+60 ৳
                                         </td>
                                     </tr>
                                   </tbody>
@@ -86,14 +86,14 @@
                     
                         <tbody>
                             <tr>
-                                <td> <img src="<?php echo $prodrow['product_image']; ?>" alt="Asus PN40 Celeron Dual Core Mini PC "></td>
+                                <td> <img src="{{asset($row->product_image)}}" alt="Asus PN40 Celeron Dual Core Mini PC "></td>
                                 <td class="text-left">
-                                    <a href="../single.php">
-                                    <?php echo $prodrow['product_name']; ?>
+                                    <a href=" {{url('single/'.$row->id)}}">
+                                   {{$row->product_name}}
                                     </a>                                                           
                                 </td>
                                 <td class="text-right">1</td>
-                                <td class="text-right"><?php echo $prodrow['product_price']+60; ?>৳</td>
+                                <td class="text-right">{{$row->product_price}} +60 ৳</td>
                             </tr>
                                                                         </tbody>
                     </table>
@@ -142,4 +142,5 @@
         </div>
     </div>
 </section>
+@endforeach
 @endsection

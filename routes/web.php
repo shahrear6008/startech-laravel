@@ -101,6 +101,7 @@ Route::get('account/profile',[UserController::class, 'profile']);
 
 
 Route::get('account/order',[UserController::class,'order']);
+Route::get('account/order_info/{id}',[UserController::class,'order_info']);
 
 Route::get('account/edit_profile', function(){
     if(session()->has('loggedin')){

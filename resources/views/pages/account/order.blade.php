@@ -45,7 +45,7 @@
           
       </div>
       <div class="actions">
-        <a href="order_view/{{$order->id}}" title="View" 
+        <a href="{{url('account/order_info/'.$order->id)}}" title="View" 
         class="btn ac-btn">View</a>      
       </div>
     </div>

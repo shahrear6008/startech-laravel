@@ -79,14 +79,18 @@ header .header_top .container .header_top_left .right_icon .btncart {
     z-index: 1;
 }
 header .header_top .container .header_top_left .right_icon .btncart .cart_counter {
-    position: absolute;
-    text-align: center;
+    display: inline-block;
     width: 20px;
     height: 20px;
-    background: orangered;
-    border-radius: 50%;
-    top: -8px;
-    right: -8px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background: #ef4a23;
+    line-height: 20px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
 }
 header .header_top .container .header_top_left .right_icon .btncart .h6 {
     color: white;

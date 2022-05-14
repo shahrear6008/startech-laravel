@@ -66,14 +66,15 @@
     }
     header .header_top .container .header_top_left .right_icon .btncart .cart_counter {
         position: absolute;
-        font-size: 10px;
+        right: -10px;
+        top: -6px;
+        background: #ef4a23;
+        color: #fff;
+        border-radius: 20px;
+        font-size: 11px;
+        line-height: 13px;
+        width: 16px;
         text-align: center;
-        width: 14px;
-        height: 12px;
-        background: orangered;
-        border-radius: 50%;
-        top: 4px;
-        right: 7px;
     }
     header .header_top .container .header_top_left .right_icon .btncart:hover {
         background: unset;

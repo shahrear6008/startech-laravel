@@ -8,8 +8,8 @@ if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 } 
 function funSearch(){
-  var search_str=jQuery('#search_str').val();
-  if(search_str!='' && search_str.length>3){
+  var search_str=jQuery('.search_str').val();
+  if(search_str!='' && search_str.length >3){
     window.location.href='/search/'+search_str;
   }
 }
@@ -179,7 +179,7 @@ $(document).ready(function(){
 
 // pagination
 
-$('#pagination-demo').twbsPagination({
+$('#pagination-demo').Pagination({
    totalPages: 16,
    visiblePages: 6,
    next: 'Next',

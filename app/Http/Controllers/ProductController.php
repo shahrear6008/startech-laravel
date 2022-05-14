@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\DisplayProduct;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -142,7 +143,7 @@ class ProductController extends Controller
             $query=$query->leftJoin('categories','categories.id','=','producttb.category_id');
             $query=$query->leftJoin('products_attr','producttb.id','=','products_attr.products_id');
       
-            $query=$query->where('product_name','like',"%$str%");
+            $query=$query->where('product_name','=',"%$str%");
             $query=$query->orwhere('product_model','like',"%$str%");
             $query=$query->orwhere('product_price','like',"%$str%");
         
@@ -192,6 +193,39 @@ class ProductController extends Controller
  
      }
 
+public function review($id){
+    $details = DisplayProduct::find($id);
+    return view ('pages.review',compact('details'));
 
+}
+public function review_submit(Request $request){
+   
+    if(session()->has('loggedin')){
+        $uid=session()->get('USER_ID');
+        $user_type="Reg";
+    }else{
+        if(!session()->has('USER_TEMP_ID')){
+            $rand=rand(111111111,999999999);
+            $getUserTempId=   session()->put('USER_TEMP_ID',$rand);
+            
+        }else{
+            $getUserTempId =session()->get('USER_TEMP_ID');
+        }
+        $uid=$getUserTempId;
+        $user_type="Not-Reg";
+    }
+    $review=DB::table('review')->insertGetId([
+        'uid'=>$uid,
+        'pid'=>$request->id,
+        'rating'=> $request->rating, 
+        'text'=>  $request->text, 
+        'created_at'=>date('Y-m-d h:i:s')
+    ]);
+   
+    $details = DisplayProduct::find($request->id);
+    return view ('pages.review',compact('details'));
+    
+
+}
     
 }

@@ -46,7 +46,7 @@
        
             <div class="header_item_search">
               <form action="" class="form" method="post">
-                  <input class="search_box" class="search_str" type="text" name="product" placeholder="Search" required />
+                  <input class="search_box search_str" type="text" name="product" placeholder="Search" required />
                   <button type="button" onclick="funSearch()" name="search" class="btns">
                   <i  class="material-icons">search</i>
                   </button>

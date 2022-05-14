@@ -16,12 +16,14 @@
                 <h1>My Wish List</h1>
               </div>
             </div>
+
+            @foreach($wishlist as $row)
              <div class="cards">
               <div class="card o-card">
                 <div class="c-head">
                   <div class="left">
                     <span class="o-id">
-                      <span>wish list# </span>
+                      <span>wish list#  {{$row->id}}</span>
                     </span>
                     <span class="o-date">Date Added: </span>
                   </div>
@@ -37,27 +39,27 @@
                   <div class="img-n-title">
                     <div class="img-wrap">
                       <a href="single.php?id=">
-                        <img src="" alt="" style="max-width:100%!important; margin:auto;" srcset="">
+                        <img src="{{asset($row->product_image)}}" alt="" style="max-width:100%!important; margin:auto;" srcset="">
                       </a>
                     </div>
                     <div class="title">
                       <h6 class="item-name">
                         <a href="single.php?id="> 
-                         
+                        {{$row->product_name}}
                         </a>
                       </h6>
                     </div>
                   </div>
-                  <div class="amount">  ৳ </div>
+                  <div class="amount"> {{$row->product_price}}  ৳ </div>
                   <div class="actions">
-                   <a href="delwishlist.php?id=">
+                   <a href="{{url('del_wish_list/'.$row->id)}}">
                       <i style="color:red"   class="material-icons">delete</i> 
                    </a>
                   </div>
                 </div>
               </div>
             </div>
-             
+             @endforeach
           </div>
         </div>
       </div>

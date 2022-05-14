@@ -6,12 +6,12 @@
     <div class="container">
         <ul class="breadcrumb">
         <li>
-          <a href="index">
+          <a href="/">
            <i class="material-icons">home</i>
           </a>
         </li>
         <li>
-            <a href="order">
+            <a href="{{url('order')}}">
              Order
             </a>
         </li>

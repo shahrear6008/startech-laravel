@@ -25,7 +25,7 @@ class Checkout extends Model
         'comment'	,
         'payment_method',	
         'shipping_method',	
-        'address_type',
+        'address_type'
        
         
     ];

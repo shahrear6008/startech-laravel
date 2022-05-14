@@ -33,7 +33,7 @@
               </label>
                </div>
             <div class="control-item">
-              <input type="text" name="product" placeholder="Keywords"  id="" class="search_str form-control">
+              <input type="text" name="product" placeholder="Keywords"  id="" class="form-control">
             </div>
             <div class="control-item">
               <select name="category_id" class="form-control">

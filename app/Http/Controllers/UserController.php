@@ -59,7 +59,7 @@ class UserController extends Controller
             ->get(); 
         
          if(isset($result[0])){
-            $db_pwd=$result[0]->password;
+            $db_pwd=hash::needsRehash($result[0]->password);
             $status=$result[0]->status;
           
 
@@ -138,23 +138,28 @@ class UserController extends Controller
                 return redirect('login');
               }
       }
-      public function changepw(Request $request){
+      public function changepw(Request $req){
         if(session()->has('loggedin')){
             $uid=session()->get('USER_ID');   
-           
-             
-            $changepw = DB::table('users')           
+           $password = $req->password;
+           $confirmpassword = $req->confirmpassword;
+           if($password===$confirmpassword) {
+              $changepw = DB::table('users')           
             ->where('id','=', $uid) 
-            ->update(['password'=> $request->password]) ;
+            ->update(['password'=> Hash::make($req->password)]) ;
+          
            
-           
-            
             $customer_info=DB::table('users')  
             ->where(['id'=>  $uid])
             ->get(); 
             
             return view('pages.account.change_pw',compact('changepw','customer_info'));
             }else{
+              Session::flash('cp_error','Warning: No match your Password & Confirm Password');
+              return redirect()->back();
+             }
+          
+          }else{
                   return redirect('login');
                  }
       }
@@ -229,7 +234,7 @@ class UserController extends Controller
       public function order_info($id){
         if(session()->has('loggedin')){
         $uid=session()->get('USER_ID');
-        $order_info =DB::table('orders') 
+        $order_info=DB::table('orders') 
         ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid')      
         ->where('pid','=', $id) 
         ->select('producttb.id','producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
@@ -245,6 +250,61 @@ class UserController extends Controller
 
          
     }
+
+    public function add_wish_list($id){
+      if(session()->has('loggedin')){
+        $uid=session()->get('USER_ID');
+        $user_type="Reg";
+       
+       $wishlist=DB::table('wishlist')->insertGetId([
+        'uid'=>$uid,
+        'pid'=>$id,
+        'created_at'=>date('Y-m-d h:i:s')
+        ]);
+        return redirect('account/wish_list');
+      }else{
+        Session::flash('email_error','Warning: You Must login First');
+        return redirect('login');
+
+       }
+    }
+
+    public function wishlist(){
+        if(session()->has('loggedin')){
+          $uid=session()->get('USER_ID');
+          
+          
+
+          $wishlist=DB::table('wishlist')
+          ->leftjoin('producttb','producttb.id' ,'=','wishlist.pid')
+          ->where(['uid'=>  $uid])
+          ->select('producttb.*','wishlist.*')
+          ->get(); 
+          $customer_info=DB::table('users') 
+          ->where(['id'=>  $uid])
+          ->get(); 
+      }
+      return view ('pages.account.wish_list',compact('wishlist','customer_info'));
+    }
+
+
+
+    public function del_wish_list($id){
+     
+      if(session()->has('loggedin')){
+        $uid=session()->get('USER_ID');       
+        
+        $wishlist=DB::table('wishlist')       
+        ->where(['uid'=>  $uid])
+        ->where(['id'=>  $id])       
+        ->delete(); 
+       
+      }
+      return redirect ('account/wish_list');
+  
+    }
+
+
     public function checkout_process(Request $request){
        
         $request->validate([
@@ -258,17 +318,18 @@ class UserController extends Controller
             'comment' => 'required'
         ]);
 
-
-
-        Checkout::insert([
+     
+      
+       DB::table('checkout')->insertGetId([
           
+            'uid' => 1,
             'f_name' => $request->fristname,
             'l_name' => $request->lastname,
             'address_1' => $request->address,
-            'mobile' => $request->mobile,
+            'mobile' => $request->telephone,
             'email' => $request->email,
             'city' => $request->city,
-            'zone' => $request->zone,
+            'zone' => $request->zone_id,
             'comment' => $request->comment,
             'payment_method' => $request->payment_method,
             'shipping_method' => $request->shipping_method
@@ -277,3 +338,4 @@ class UserController extends Controller
 
      } 
 }
+

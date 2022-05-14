@@ -25,7 +25,8 @@
         <button type="button" class="close material-icons" data-dismiss="alert">close</button>
       </div>
       <h1 class="title"> Shopping Cart </h1>
-      @if(session('cart'))count()>0))
+@if(count(session('cart'))>0)
+    
 					<div class="table-responsive">
 						<table class="table table-bordered cart-table bg-white">
 							<thead>
@@ -38,7 +39,7 @@
 									<td class="text-left">Total</td>
 								</tr>
 							</thead>  
-	<tbody>
+	<tbody class="tbody">
   <?php $total = 0 ?>
 <!-- by this code session get all product that user chose -->
 
@@ -78,7 +79,7 @@
                
 
 
-									<td class="cart_item_pname total_price pro_unitprice\">
+									<td class="cart_item_pname total_price pro_unitprice">
 										<h5 class="">৳ {{$details['price'] }}</h5>
 									</td>
 									<td class="cart_item_pname">
@@ -173,7 +174,8 @@
                method: "patch",
                data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},
                success: function (result) {
-                  window.location.reload();
+                $('.tbody').html(result);
+                
                }
             });
             e.preventDefault();
@@ -188,7 +190,7 @@
                 method: "DELETE",
                 data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
                 success: function (result) {
-                      window.location.reload();
+                  $('.tbody').html(result);
                     
                 }
             });

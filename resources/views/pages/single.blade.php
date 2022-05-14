@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="option">
-          <a href="/" style="color:unset" class="op_1">
+          <a href="{{url('add_wish_list/'.$details['id'])}}" style="color:unset" class="op_1">
             <span> Save </span>
             <i class="material-icons">bookmark_border</i>
           </a>
@@ -245,7 +245,7 @@
             <h3> Reviews (0)
               <br> <small> Get specific details about this product from customers who own it.</small>
             </h3>
-            <a href='review' class=" btn st-outline"> Write a Review </a>
+            <a href="{{url('review/'.$details->id)}}" class=" btn st-outline"> Write a Review </a>
           </div>
           <div class="message">
             <div class="m_icon"> <i class="material-icons">assignment</i> </div>
@@ -312,10 +312,10 @@
                 </div>
               </div>
               <div class="btn-wrap">
-                  <a href="shopping_cart">
+                  <a href="{{url('shopping_cart')}}">
                     <button class="btn">View Cart</button>
                   </a>
-                  <a href="checkout">
+                  <a href="{{url('checkout')}}">
                     <button class="btn st-outline">Confirm Order</button>
                   </a>
               </div>

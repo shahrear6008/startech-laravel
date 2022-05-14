@@ -1,4 +1,5 @@
-<?php include_once('header.php'); ?>
+@extends('layouts.default')
+@section('content')
 <section class="after-header p-tb-10">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,10 +18,12 @@
         </a>
         <h1>Write Review</h1>
       </div>
-      <form action="/account/review" method="post" enctype="multipart/form-data" class="form-horizontal">
+      <form action="{{url('review_submit')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        @csrf
+        <input type="hidden" name="id" value="{{$details->id}}">
         <div class="form-group">
           <label>Product</label>
-          <div class="b-box">Acer Aspire 3 A315-58 Core i3 11th Gen 15.6" FHD Laptop</div>
+          <div class="b-box">{{$details->product_name}}</div>
         </div>
         <div class="form-group required">
           <label>Rating</label>
@@ -31,11 +34,11 @@
           <textarea name="text" id="input-text" placeholder="Your Review" class="form-input"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn st-outline" href="https://www.srboostpoint.xyz/">Back</a>
+        <a class="btn st-outline" href="/">Back</a>
       </form>
     </div>
   </div>
 </section>
 
 
-<?php include_once('footer.php');?>
+@endsection

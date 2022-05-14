@@ -89,6 +89,9 @@ Route::get('ups', function(){
         return view ('pages.product2',compact('products'));
 });
 
+
+// add cart items 
+
 Route::get('addtopcb/{id}',[PcbuilderController::class, 'addtopcb']);
 Route::get('deltopcb/{id}',[PcbuilderController::class,'remove']);
 Route::get('pc_builder',[PcbuilderController::class, 'pcbuilder']);
@@ -147,16 +150,7 @@ Route::get('account/addnewaddress',function(){
     }
     return view ('pages.account.addnewaddress',compact('customer_info'));
 });
-Route::get('account/wish_list',function(){
-    if(session()->has('loggedin')){
-        $uid=session()->get('USER_ID'); 
-        $customer_info=DB::table('users') 
-        ->where(['id'=>  $uid])
-        ->get(); 
-    }
-    return view ('pages.account.wish_list',compact('customer_info'));
-  
-});
+
 Route::get('account/saved_pc',function(){
     if(session()->has('loggedin')){
         $uid=session()->get('USER_ID'); 
@@ -200,6 +194,17 @@ Route::get('account/your_trans',function(){
 
 
 Route::get('single/{id}',[ProductController::class,'detail']);
+
+
+// review
+Route::get('review/{id}',[ProductController::class,'review']);
+
+Route::post('review_submit',[ProductController::class,'review_submit']);
+
+//wish_list 
+Route::get('add_wish_list/{id}',[UserController::class,'add_wish_list']);
+Route::get('account/wish_list',[UserController::class,'wishlist']);
+Route::get('del_wish_list/{id}',[UserController::class,'del_wish_list']);
 
 
 
@@ -253,19 +258,6 @@ Route::get('clear_compare', function () {
 
 
 
-// SSLCOMMERZ Start
-Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
-
-Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
-Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
-
-Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
-
-Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
-//SSLCOMMERZ END
 
 
 
@@ -360,3 +352,20 @@ $pcb = DB::table('producttb')
         ->get();
         return view ('pages.tool.choose',compact('pcb'));
     });
+
+
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END

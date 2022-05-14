@@ -100,7 +100,7 @@
         <p>Compare Product</p>
         <span class="btncompare loaded close"><i class="material-icons">close</i></span>
     </div>
-    <div class="content">
+    <div class="content tbody">
     <div id="loader"></div>
       @if(session('compare')) 
       @foreach(session('compare') as $id => $row)
@@ -153,7 +153,7 @@
         <p>YOUR CART</p>
         <span class="top_cart"><i class="material-icons">close</i></span>
     </div>
-    <div class="content">
+    <div class="content tbody">
       <div id="loader"></div>
       <?php $total = 0 ?>
 <!-- by this code session get all product that user chose -->
@@ -268,7 +268,7 @@
                 method: "DELETE",
                 data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
                 success:function(result){
-                      window.location.reload();
+                  $('.tbody').html(result);
                     
                 }
             });
@@ -285,7 +285,7 @@
                 method: "DELETE",
                 data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
                 success:function(result){
-                      window.location.reload();
+                  $('.tbody').html(result);
                     
                 }
             });

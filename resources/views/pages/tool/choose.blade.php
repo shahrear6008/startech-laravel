@@ -169,7 +169,7 @@
             </div>
  @foreach ($pcb as $row)
             <div class="cpu_content">
-                      <a href="{{url('single/'.$row->id)}}"> <img src=" {{$row->product_image}}" /></a>
+                      <a href="{{url('single/'.$row->id)}}"> <img src=" {{asset($row->product_image)}}" /></a>
                         <div class="content_details">
                             <div class="content_left">
                                 <h3> {{$row->product_name}}</h3>

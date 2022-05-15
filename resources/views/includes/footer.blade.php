@@ -268,7 +268,7 @@
                 method: "DELETE",
                 data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
                 success:function(result){
-                  $('.tbody').html(result);
+                  window.location.reload();
                     
                 }
             });
@@ -285,7 +285,7 @@
                 method: "DELETE",
                 data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
                 success:function(result){
-                  $('.tbody').html(result);
+                  window.location.reload();
                     
                 }
             });

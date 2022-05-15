@@ -38,7 +38,7 @@
             </a>
             <a
               class="action"
-              href="save_pc"
+              href="{{url('account/save_pc')}}"
             >
               <i class="material-icons">save</i>
               <span class="action-text">Save PC</span>
@@ -128,7 +128,7 @@
   <div class="img">
     <a
       target="_blank"
-      href="https://www.startech.com.bd/intel-pentium-gold-g5420-processor"
+      href="#"
       ><img
         src="{{asset($pcbuilder->product_image)}}"
         alt="CPU"

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{asset('css/pc_builder.css')}}">
     <link rel="stylesheet" href="{{asset('css/pc-builder.css')}}">
     <link rel="stylesheet" href="{{asset('css/path.css')}}"> 
-    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+
     <link rel="stylesheet" href="{{asset('css/range.css')}}">
     <link rel="stylesheet" href="{{asset('css/register.css')}}">
     <link rel="stylesheet" href="{{asset('css/sign_in.css')}}">
@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{asset('css/order_view.css')}}">
    
      <link rel="stylesheet" href="{{asset('css/common.css')}}">
-        
+     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">   
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">   
        
 

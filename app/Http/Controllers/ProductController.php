@@ -143,7 +143,7 @@ class ProductController extends Controller
             $query=$query->leftJoin('categories','categories.id','=','producttb.category_id');
             $query=$query->leftJoin('products_attr','producttb.id','=','products_attr.products_id');
       
-            $query=$query->where('product_name','=',"%$str%");
+            $query=$query->where('product_name','like',"%$str%");
             $query=$query->orwhere('product_model','like',"%$str%");
             $query=$query->orwhere('product_price','like',"%$str%");
         

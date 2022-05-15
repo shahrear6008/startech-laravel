@@ -5,9 +5,13 @@
 
 <div class="ac-title">
     <a href="account"><span class="material-icons">arrow_back</span></a>
-    <h1>Saved PC</h1></div>
+    <h1>Saved PC</h1>
+</div>
+
+ 
 <div class="cards">
-    
+
+   @foreach($saved_pc as $row)
                 
          <div class="card">
             <div class="img-n-title">
@@ -15,21 +19,22 @@
                    <span class="material-icons ico-image">important_devices</span>
                 </div>
                 <div class="title">
-                    <h6 class="item-name"></h6>
+                    <h6 class="item-name">{{$row->name}}</h6>
                     <p></p>
                 </div>
             </div>
             <div class="date">
                 <p>Date Added</p>
-                <p class="fade"></p>
+                <p class="fade">{{$row->description}}</p>
             </div>
             <div class="actions">
           
-                <a href="tool_view?id=" title="View" class="btn ac-btn">View</a>
-                <a href="delsaved_pc.php?id=" title="Delete" class="ac-icon"><span class="material-icons">delete</span></a>
+                <a href="{{url('pc_builder_view/'.$row->id)}}" title="View" class="btn ac-btn">View</a>
+                <a href="{{url('delsavedpc/'.$row->id)}}" title="Delete" class="ac-icon"><span class="material-icons">delete</span></a>
             </div>
         </div>
-      
+        
+        @endforeach
         </div>
      </div>
    </div>

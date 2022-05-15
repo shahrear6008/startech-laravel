@@ -237,7 +237,7 @@ class UserController extends Controller
         $order_info=DB::table('orders') 
         ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid')      
         ->where('pid','=', $id) 
-        ->select('producttb.id','producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
+        ->distinct()->select('producttb.id','producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
         ->get(); 
 
          $customer_info=DB::table('users')  

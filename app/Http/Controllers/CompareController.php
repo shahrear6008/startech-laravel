@@ -29,6 +29,7 @@ class CompareController extends Controller
 
      // if cart is empty then this the first product
      if(!$compare) {
+    
 
          $compare = [
                  $id => [
@@ -46,16 +47,10 @@ class CompareController extends Controller
          session()->put('compare', $compare);
 
          return redirect()->back()->with('success', 'added to compare successfully!');
+     
      }
 
-     // if cart not empty then check if this product exist then increment quantity
-     if(isset($compare[$id])) {
-
-         // this code put product of choose in cart
-
-         return redirect()->back()->with('success', 'Product already added to compare !');
-
-     }
+     
 
      // if item not exist in cart then add to cart with quantity = 1
      $compare[$id] = [

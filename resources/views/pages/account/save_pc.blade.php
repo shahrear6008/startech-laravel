@@ -6,7 +6,9 @@
 <div class="ac-title">
     <a href="account"><span class="material-icons">arrow_back</span></a>
     <h1>Save Your PC</h1></div>
-       <form action=""  method="post" enctype="multipart/form-data" class="form-horizontal">
+       <form action="{{url('savepc_submit')}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
+
+       @csrf
         <div class="form-group required">
             <label for="input-name">Name</label>
             <input type="text" name="name" value="" placeholder="Name" id="input-name" class="form-control">

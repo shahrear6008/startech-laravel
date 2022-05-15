@@ -25,33 +25,11 @@ use App\Http\Controllers\SslCommerzPaymentController;
 
 Route::get('/', [SliderController::class,'index']);
 Route::get('/', [ProductController::class,'display']);
+Route::get('single/{id}',[ProductController::class,'detail']);
 
 
-Route::get('register', function(){
-    return view('pages.account.register');
-});
-Route::get('login', function(){
-    return view('pages.account.login');
-});
-Route::get('forgotten', function(){
-    return view('pages.account.forgotten');
-});
 
-Route::get('logout', function () {
-    session()->forget('loggedin');
-    session()->forget('USER_ID');
-    session()->forget('cart'); 
-    session()->forget('compare'); 
-  
-    return redirect('/');
-});
 
-Route::get('print_pc', function(){
-    return view('pages.tool.print_pc');
-});
-Route::get('compare', function(){
-    return view('pages.common.compare');
-});
 Route::get('thunder', function(){
     return view('pages.thunder');
 });
@@ -95,9 +73,29 @@ Route::get('ups', function(){
 Route::get('addtopcb/{id}',[PcbuilderController::class, 'addtopcb']);
 Route::get('deltopcb/{id}',[PcbuilderController::class,'remove']);
 Route::get('pc_builder',[PcbuilderController::class, 'pcbuilder']);
+Route::get('print_pc', function(){
+    return view('pages.tool.print_pc');
+});
 
 
+Route::get('register', function(){
+    return view('pages.account.register');
+});
+Route::get('login', function(){
+    return view('pages.account.login');
+});
+Route::get('forgotten', function(){
+    return view('pages.account.forgotten');
+});
 
+Route::get('logout', function () {
+    session()->forget('loggedin');
+    session()->forget('USER_ID');
+    session()->forget('cart'); 
+    session()->forget('compare'); 
+  
+    return redirect('/');
+});
 Route::post('registerUser',[UserController::class, 'register']);
 Route::post('loginUser',[UserController::class, 'login']);
 Route::get('account/profile',[UserController::class, 'profile']);
@@ -151,16 +149,46 @@ Route::get('account/addnewaddress',function(){
     return view ('pages.account.addnewaddress',compact('customer_info'));
 });
 
-Route::get('account/saved_pc',function(){
+// Route::get('account/saved_pc',function(){
+//     if(session()->has('loggedin')){
+//         $uid=session()->get('USER_ID'); 
+//         $customer_info=DB::table('users') 
+//         ->where(['id'=>  $uid])
+//         ->get(); 
+//     }
+//     return view ('pages.account.saved_pc',compact('customer_info'));
+ 
+// });
+
+// Route::get('account/saved_pc',function(){
+//     if(session()->has('loggedin')){
+//         $uid=session()->get('USER_ID'); 
+//         $customer_info=DB::table('users') 
+//         ->where(['id'=>  $uid])
+//         ->get(); 
+//     }
+//     return view ('pages.account.saved_pc',compact('customer_info'));
+ 
+// });
+Route::get('account/save_pc',function(){
     if(session()->has('loggedin')){
         $uid=session()->get('USER_ID'); 
         $customer_info=DB::table('users') 
         ->where(['id'=>  $uid])
         ->get(); 
-    }
-    return view ('pages.account.saved_pc',compact('customer_info'));
- 
+        
+        return view ('pages.account.save_pc',compact('customer_info'));
+    }else{
+        return redirect('login');
+      }
 });
+Route::post('savepc_submit',[PcbuilderController::class,'savepc_submit']);
+
+
+
+
+
+
 Route::get('account/star_point',function(){
     if(session()->has('loggedin')){
         $uid=session()->get('USER_ID'); 
@@ -171,16 +199,11 @@ Route::get('account/star_point',function(){
     return view ('pages.account.star_point',compact('customer_info'));
   
 });
-Route::get('account/saved_pc',function(){
-    if(session()->has('loggedin')){
-        $uid=session()->get('USER_ID'); 
-        $customer_info=DB::table('users') 
-        ->where(['id'=>  $uid])
-        ->get(); 
-    }
-    return view ('pages.account.saved_pc',compact('customer_info'));
+Route::get('account/saved_pc',[PcbuilderController::class,'saved_pc']);
+Route::get('delsavedpc/{id}',[PcbuilderController::class,'delsavedpc']);
+Route::get('pc_builder_view/{id}',[PcbuilderController::class,'pc_builder_view']);
+
    
-});
 Route::get('account/your_trans',function(){
     if(session()->has('loggedin')){
         $uid=session()->get('USER_ID'); 
@@ -193,12 +216,11 @@ Route::get('account/your_trans',function(){
 });
 
 
-Route::get('single/{id}',[ProductController::class,'detail']);
+
 
 
 // review
 Route::get('review/{id}',[ProductController::class,'review']);
-
 Route::post('review_submit',[ProductController::class,'review_submit']);
 
 //wish_list 
@@ -235,6 +257,9 @@ Route::post('checkout_process',[UserController::class,'checkout_process']);
 // compare start
 
 Route::get('add-to-compare/{id}',[CompareController::class,'addTocompare']);
+Route::get('compare', function(){
+    return view('pages.common.compare');
+});
 
 Route::delete('remove-from-compare',[CompareController::class,'remove']);
 Route::get('clear_compare', function () {  

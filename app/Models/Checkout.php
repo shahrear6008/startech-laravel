@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Checkout extends Model
 {
     use HasFactory;
-    protected $table = 'checkout';
+    protected $table = 'address';
     protected $fillable = [
         'uid',
         'f_name',

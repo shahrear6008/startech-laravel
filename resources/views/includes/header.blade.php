@@ -30,7 +30,7 @@
                     <span id="cart_count" class="cart_counter">
                     {{ count(session('cart')) }}
                     </span>
-               @else
+                @else
                     <span id="cart_count" class="cart_counter">
                      0
                     </span>

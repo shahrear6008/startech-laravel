@@ -220,7 +220,7 @@ Route::get('account/your_trans',function(){
 
 
 // review
-Route::get('review/{id}',[ProductController::class,'review']);
+Route::get('review/{id}',[ProductController::class,'review'])->name('review');
 Route::post('review_submit',[ProductController::class,'review_submit']);
 
 //wish_list 

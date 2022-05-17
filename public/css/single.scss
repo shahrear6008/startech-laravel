@@ -573,7 +573,16 @@ section {
                             }
                         }
                     }
-
+                    .review-wrap {
+                        padding: 20px 0;
+                        border-bottom: 1px solid #ecedef;
+                        .review-author {
+                            display: inline-block;
+                            width: 100%;
+                            line-height: 20px;
+                            margin-bottom: 5px;
+                        }
+                    }
                     .message {
                         padding: 80px 0;
                         text-align: center;

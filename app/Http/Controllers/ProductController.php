@@ -222,9 +222,10 @@ public function review_submit(Request $request){
         'created_at'=>date('Y-m-d h:i:s')
     ]);
    
-    $details = DisplayProduct::find($request->id);
-    return view ('pages.review',compact('details'));
-    
+   
+     if(isset($review)){
+          return redirect()->back();  
+        }
 
 }
     

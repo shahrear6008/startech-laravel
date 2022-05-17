@@ -532,6 +532,16 @@ section .container .discription .sidebar_left .Question .Questions h3 {
 section .container .discription .sidebar_left .Question .Questions h3 small {
     font-weight: 300;
 }
+section .container .discription .sidebar_left .Question .review-wrap {
+    padding: 20px 0;
+    border-bottom: 1px solid #ecedef;
+}
+section .container .discription .sidebar_left .Question .review-wrap .review-author {
+    display: inline-block;
+    width: 100%;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
 section .container .discription .sidebar_left .Question .message {
     padding: 80px 0;
     text-align: center;

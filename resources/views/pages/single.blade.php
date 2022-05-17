@@ -247,12 +247,33 @@
             </h3>
             <a href="{{url('review/'.$details->id)}}" class=" btn st-outline"> Write a Review </a>
           </div>
+          <div id="review">
+            <div class="review-wrap">
+              <div class="review-author">
+                <span class="rating">
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                  <span class="material-icons">star</span>
+                </span>
+              </div>
+              <p class="review">One of the best Motherboard Processor Combo of AMD ever. Thank you Star tech.</p>
+              <p class="author">By <span class="name">Shuvo Choudhury</span> on 16 May 2022 </p>
+            </div>
+            <div class="text-center"></div>
+          </div>
+
+
           <div class="message">
             <div class="m_icon"> <i class="material-icons">assignment</i> </div>
             <h5>
               This product has no reviews yet. Be the first one to write a review.
             </h5> </div>
         </div>
+        
+
+        
       </div>
 
 

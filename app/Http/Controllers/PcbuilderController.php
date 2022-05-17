@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\DisplayProduct;
+use App\Helpers\common;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class PcbuilderController extends Controller

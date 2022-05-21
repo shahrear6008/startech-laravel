@@ -452,10 +452,10 @@ INSERT INTO `products_attr` (`id`, `products_id`, `sku`, `attr_image`, `mrp`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `producttb`
+-- Table structure for table `products`
 --
 
-CREATE TABLE `producttb` (
+CREATE TABLE `products` (
   `id` int(100) NOT NULL,
   `category_id` int(10) NOT NULL,
   `component_id` varchar(100) NOT NULL,
@@ -480,10 +480,10 @@ CREATE TABLE `producttb` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `producttb`
+-- Dumping data for table `products`
 --
 
-INSERT INTO `producttb` (`id`, `category_id`, `component_id`, `product_name`, `product_price`, `product_watt`, `product_image`, `product_thumb1`, `product_thumb2`, `product_model`, `product_brand`, `product_camera`, `product_availability`, `product_weight`, `product_summary`, `product_processor`, `product_ram`, `product_graphics_card`, `product_storage`, `product_rating`, `product_quantity`) VALUES
+INSERT INTO `products` (`id`, `category_id`, `component_id`, `product_name`, `product_price`, `product_watt`, `product_image`, `product_thumb1`, `product_thumb2`, `product_model`, `product_brand`, `product_camera`, `product_availability`, `product_weight`, `product_summary`, `product_processor`, `product_ram`, `product_graphics_card`, `product_storage`, `product_rating`, `product_quantity`) VALUES
 (1, 1, '11', 'Intel Atom x5-Z8350 Processor', 14000, 20, './img/upload/product1.jpg', './img/upload/product2.jpg', './img/upload/product6.jpg', 'Model No.  5462', 'Walton', '12MP', 'available', 250, 'out of stock', 'Snapdragon', '4', 'Graphics Card Intel ', '2.5\\\" Up to 1TB Hard Driv', 'Rating', ''),
 (2, 1, '13', 'Intel Atom x5-Z8350 Processor', 8000, 20, './img/upload/product2.jpg', './img/upload/product1.jpg', './img/upload/product1.jpg', 'Model No.  5464', 'xiami', '21MP', 'available', 120, 'In stock', 'intel', '4', 'Graphics Card Intel ', '2.5\\\" Up to 1TB Hard Driv', 'Rating', ''),
 (3, 2, '12', 'Apple MacBook Air 13.3-Inch', 10000, 20, './img/upload/product3.jpg', './img/upload/product1.jpg', './img/upload/product6.jpg', 'Model No.  5467', 'Samsung', '8MP', 'out of stock', 200, 'out of stock', 'AMD', '4', 'Graphics Card Intel ', '2.5\\\" Up to 1TB Hard Driv', 'Rating', ''),
@@ -777,9 +777,9 @@ ALTER TABLE `products_attr`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `producttb`
+-- Indexes for table `products`
 --
-ALTER TABLE `producttb`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -933,9 +933,9 @@ ALTER TABLE `products_attr`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `producttb`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `producttb`
+ALTER TABLE `products`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --

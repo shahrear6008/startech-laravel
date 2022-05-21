@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class DisplayProduct extends Model
 {
     use HasFactory;
-    protected $table = 'producttb';
+    protected $table = 'products';
 }

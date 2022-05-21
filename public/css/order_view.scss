@@ -1,220 +1,223 @@
 .bg-bt-gray {
-  background: #f2f4f8;
-  border-top: 1px solid #ddd;
-  .container.ac-layout {
-    max-width: 1000px;
-    padding-bottom: 50px;
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin-right: -15px;
-      margin-left: -15px;
-      .col-md-8 {
-        position: relative;
-        min-height: 1px;
-        padding-right: 15px;
-        padding-left: 15px;
-        .info-page .content {
-          padding: 30px;
-        }
-
-        .ws-box {
-          background: #fff;
-          border-radius: 5px;
-          box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
-          .head {
-            text-align: center;
-            padding-bottom: 30px;
-            h1 {
-              margin: 0 0 5px;
-            }
-            .status {
-              display: inline-block;
-              padding: 3px 5px;
-              border-radius: 2px;
-              background: #27ae60;
-              color: #fff;
-              font-size: 12px;
-            }
-          }
-          .g-box {
-            background: #f2f4f8;
-            border-radius: 5px;
-            padding: 20px;
-            .row {
-              display: -ms-flexbox;
-              display: flex;
-              -ms-flex-wrap: wrap;
-              flex-wrap: wrap;
-              margin-right: -15px;
-              margin-left: -15px;
-              .col-md-6 {
+    background: #f2f4f8;
+    border-top: 1px solid #ddd;
+    .container.ac-layout {
+        max-width: 1000px;
+        padding-bottom: 50px;
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+            .col-md-8 {
                 position: relative;
-                width: 100%;
                 min-height: 1px;
                 padding-right: 15px;
                 padding-left: 15px;
-                .p-tb-15 {
-                  padding-top: 15px;
-                  padding-bottom: 15px;
+                .info-page .content {
+                    padding: 30px;
                 }
-                .m-t-30 {
-                  margin-top: 30px;
-                }
-              }
-              table {
-                width: 100%;
-                td {
-                  padding: 0 0 7px;
-                }
-                .paid td.text-right {
-                  color: #27ae60;
-                }
-                .due td {
-                  border-top: 1px solid #ddd;
-                  padding-top: 7px;
-                }
-                .due td.text-right {
-                  color: red;
-                }
-              }
-            }
-          }
-          .m-t-30 {
-            margin-top: 30px;
-          }
-          .table-order-products {
-            margin-bottom: 20px;
-          }
 
-          .table-bordered {
-            width: 100%;
-          }
-          .text-right {
-            text-align: right;
-            padding-right: 15px;
-            .st-outline {
-              background: none;
-              color: #3749bb;
-            }
-          }
-        }
-      }
-      .col-md-4 {
-        position: relative;
+                .ws-box {
+                    background: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+                    .head {
+                        text-align: center;
+                        padding-bottom: 30px;
+                        h1 {
+                            margin: 0 0 5px;
+                        }
+                        .status {
+                            display: inline-block;
+                            padding: 3px 5px;
+                            border-radius: 2px;
+                            background: #27ae60;
+                            color: #fff;
+                            font-size: 12px;
+                        }
+                    }
+                    .g-box {
+                        background: #f2f4f8;
+                        border-radius: 5px;
+                        padding: 20px;
+                        .row {
+                            display: -ms-flexbox;
+                            display: flex;
+                            -ms-flex-wrap: wrap;
+                            flex-wrap: wrap;
+                            margin-right: -15px;
+                            margin-left: -15px;
+                            .col-md-6 {
+                                position: relative;
+                                width: 100%;
+                                min-height: 1px;
+                                padding-right: 15px;
+                                padding-left: 15px;
+                                .p-tb-15 {
+                                    padding-top: 15px;
+                                    padding-bottom: 15px;
+                                }
+                                .m-t-30 {
+                                    margin-top: 30px;
+                                }
+                                address {
+                                    text-transform: capitalize;
+                                }
+                            }
+                            table {
+                                width: 100%;
+                                td {
+                                    padding: 0 0 7px;
+                                }
+                                .paid td.text-right {
+                                    color: #27ae60;
+                                }
+                                .due td {
+                                    border-top: 1px solid #ddd;
+                                    padding-top: 7px;
+                                }
+                                .due td.text-right {
+                                    color: red;
+                                }
+                            }
+                        }
+                    }
+                    .m-t-30 {
+                        margin-top: 30px;
+                    }
+                    .table-order-products {
+                        margin-bottom: 20px;
+                    }
 
-        min-height: 1px;
-        padding-right: 15px;
-        padding-left: 15px;
-        .content {
-          padding: 30px;
-        }
-        .order-details-history {
-          height: 100%;
-        }
-
-        .ws-box {
-          background: #fff;
-          border-radius: 5px;
-          box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
-          .m-b-15 {
-            margin-bottom: 15px;
-          }
-          .histories {
-            border-left: 2px solid #ddd;
-            padding-left: 20px;
-            margin-left: 4px;
-            .history {
-              margin-bottom: 20px;
-              position: relative;
-              &::before {
-                content: "";
-                position: absolute;
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 10px;
-                border: 2px solid #ef4a23;
-                background: #fff;
-                left: -26px;
-                top: 6px;
-              }
-              h5 {
-                margin-bottom: 4px;
-              }
-              p {
-                margin-bottom: 0px;
-              }
-              span {
-                display: inline-block;
-                margin-top: 5px;
-              }
-              .fade {
-                color: #666666;
-                font-size: 13px;
-              }
+                    .table-bordered {
+                        width: 100%;
+                    }
+                    .text-right {
+                        text-align: right;
+                        padding-right: 15px;
+                        .st-outline {
+                            background: none;
+                            color: #3749bb;
+                        }
+                    }
+                }
             }
-          }
+            .col-md-4 {
+                position: relative;
+
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+                .content {
+                    padding: 30px;
+                }
+                .order-details-history {
+                    height: 100%;
+                }
+
+                .ws-box {
+                    background: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+                    .m-b-15 {
+                        margin-bottom: 15px;
+                    }
+                    .histories {
+                        border-left: 2px solid #ddd;
+                        padding-left: 20px;
+                        margin-left: 4px;
+                        .history {
+                            margin-bottom: 20px;
+                            position: relative;
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                display: inline-block;
+                                width: 10px;
+                                height: 10px;
+                                border-radius: 10px;
+                                border: 2px solid #ef4a23;
+                                background: #fff;
+                                left: -26px;
+                                top: 6px;
+                            }
+                            h5 {
+                                margin-bottom: 4px;
+                            }
+                            p {
+                                margin-bottom: 0px;
+                            }
+                            span {
+                                display: inline-block;
+                                margin-top: 5px;
+                            }
+                            .fade {
+                                color: #666666;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
-  .st-outline {
-    background: none;
-    color: #3749bb;
-  }
-  .p-tb-15 {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
+    .st-outline {
+        background: none;
+        color: #3749bb;
+    }
+    .p-tb-15 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
 }
 
 .order-details .table-order-products thead td {
-  border-bottom: 1px solid #eee;
-  background: #fff;
+    border-bottom: 1px solid #eee;
+    background: #fff;
 }
 
 .order-details .table-order-products td {
-  padding-left: 0;
+    padding-left: 0;
 }
 .table-bordered thead td {
-  padding: 14px 10px;
-  color: #666666;
-  font-size: 13px;
-  font-weight: 600;
-  background: #f5f7f9;
+    padding: 14px 10px;
+    color: #666666;
+    font-size: 13px;
+    font-weight: 600;
+    background: #f5f7f9;
 }
 .order-details .table-order-products td {
-  padding-left: 0;
+    padding-left: 0;
 }
 
 .table-bordered tbody td {
-  padding: 12px 10px;
-  border-bottom: 1px solid #eee;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
 }
 .order-details .table-order-products img {
-  height: 50px;
+    height: 50px;
 }
 
 .info-page .content img {
-  max-width: 100%;
+    max-width: 100%;
 }
 @media (min-width: 768px) {
-  .col-md-8 {
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-  }
+    .col-md-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
 }
 @media (min-width: 768px) {
-  .col-md-4 {
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-  }
+    .col-md-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
 }
 @media (min-width: 768px) {
-  .col-md-6 {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
+    .col-md-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
 }

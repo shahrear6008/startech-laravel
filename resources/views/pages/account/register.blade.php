@@ -28,7 +28,7 @@
           @if(Session::has('msg'))
           <p>{{Session::get('msg')}}</p>
           @endif
-          <form action="{{url('/registerUser')}}" method="post" enctype="multipart/form-data">
+          <form action="{{url('registerUser')}}" method="post" enctype="multipart/form-data">
            @csrf
             <div class="multiple-form-group">
               <div class="form-group required">

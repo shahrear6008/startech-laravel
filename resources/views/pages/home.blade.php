@@ -5,26 +5,11 @@
     <div class="content-area">
       <div class="slider">
         <!-- fade css -->
-     
+     @foreach ($sliders as $row)
                 <div class="myslide">
-                <img src="img/slider/slider1.jpg" style="width:100%;" />
-                </div>
-                <div class="myslide">
-                <img src="img/slider/slider2.jpg" style="width:100%;" />
-                </div>
-                <div class="myslide">
-                <img src="img/slider/slider3.jpg" style="width:100%;" />
-                </div>
-                <div class="myslide">
-                <img src="img/slider/slider4.jpg" style="width:100%;" />
-                </div>
-                <div class="myslide">
-                <img src="img/slider/slider5.jpg" style="width:100%;" />
-                </div>
-                <div class="myslide">
-                <img src="img/slider/slider6.jpg" style="width:100%;" />
-                </div>
-            
+                  <img src="{{asset($row->slider_img)}}" style="width:100%;" />
+                </div>               
+     @endforeach       
  
         <!-- /fade css--->
         <div class="dotsbox" >
@@ -83,7 +68,7 @@
 @foreach ($displays as $row)
     <a href="single/{{$row->id}}" class="p_item">
       <div class="p_item_inner">                                   
-        <img src="{{$row->product_image}}" alt="" />
+        <img src="{{asset($row->product_image)}}" alt="" />
           <h4> {{$row->product_name}} </h4>
           <h2> {{$row-> product_price}} ৳</h2>
       </div>

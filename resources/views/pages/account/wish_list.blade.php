@@ -10,7 +10,7 @@
           <div class="row">
             <div class="page_header text-center">
               <div class="ac-title">
-                <a href="account">
+                <a href="{{url('account/profile')}}">
                   <span class="material-icons">keyboard_backspace</span>
                 </a>
                 <h1>My Wish List</h1>

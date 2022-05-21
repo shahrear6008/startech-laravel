@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\DisplayProduct;
 use App\Models\Review;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,11 +11,17 @@ class ProductController extends Controller
 {
      public function display(){
         $displays = DisplayProduct::limit(10)->get();
-        return view ('pages.home',compact('displays'));
+        $sliders = Slider::all();
+        return view ('pages.home',compact('displays','sliders'));
     }
      public function detail($id){
         $details = DisplayProduct::find($id);
-        return view ('pages.single',compact('details'));
+        $reviews = DB::table('review')
+        ->leftjoin('users','users.id','=','review.uid')
+        ->where(['pid'=>  $id])   
+        ->select('users.fname','users.lname','review.*')
+        ->get();
+        return view ('pages.single',compact('details','reviews'));
     }
    
      public function checkout(){
@@ -139,9 +146,9 @@ class ProductController extends Controller
     public function search(Request $request,$str)
     {
         $result['product']=
-            $query=DB::table('producttb');
-            $query=$query->leftJoin('categories','categories.id','=','producttb.category_id');
-            $query=$query->leftJoin('products_attr','producttb.id','=','products_attr.products_id');
+            $query=DB::table('products');
+            $query=$query->leftJoin('categories','categories.id','=','products.category_id');
+         
       
             $query=$query->where('product_name','like',"%$str%");
             $query=$query->orwhere('product_model','like',"%$str%");
@@ -149,7 +156,7 @@ class ProductController extends Controller
         
             $query=$query->orwhere('product_weight','like',"%$str%");
             $query=$query->orwhere('product_brand','like',"%$str%") ;
-            $query=$query->distinct()->select('producttb.*');
+            $query=$query->distinct()->select('products.*');
             $query=$query->get();
             $result['product']=$query;
                     
@@ -218,15 +225,17 @@ public function review_submit(Request $request){
         'uid'=>$uid,
         'pid'=>$request->id,
         'rating'=> $request->rating, 
-        'text'=>  $request->text, 
-        'created_at'=>date('Y-m-d h:i:s')
-    ]);
+        'text'=>  $request->text
+     ]);
    
    
      if(isset($review)){
           return redirect()->back();  
         }
 
-}
+    }
+ 
+
+
     
 }

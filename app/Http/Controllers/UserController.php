@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Checkout;
+use App\Models\Address;
+
 use Illuminate\Http\Request;
-
-
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cookie;
 
-use Crypt;
 use Mail;
 use Session;
 
@@ -59,7 +57,7 @@ class UserController extends Controller
             ->get(); 
         
          if(isset($result[0])){
-            $db_pwd=hash::needsRehash($result[0]->password);
+            $db_pwd=$result[0]->password;
             $status=$result[0]->status;
           
 
@@ -133,14 +131,14 @@ class UserController extends Controller
             ->where(['id'=>  $uid])
             ->get(); 
             
-            return view('pages.account.edit_profile',compact('editprofile','customer_info'));
+            return redirect('account/edit_profile');
             }else{
                 return redirect('login');
               }
       }
       public function changepw(Request $req){
         if(session()->has('loggedin')){
-            $uid=session()->get('USER_ID');   
+           $uid=session()->get('USER_ID');   
            $password = $req->password;
            $confirmpassword = $req->confirmpassword;
            if($password===$confirmpassword) {
@@ -163,6 +161,23 @@ class UserController extends Controller
                   return redirect('login');
                  }
       }
+      public function address(){
+        if(session()->has('loggedin')){
+          $uid=session()->get('USER_ID');
+
+          $address =DB::table('address') 
+          ->where('uid','=', $uid) 
+           ->get(); 
+  
+           $customer_info=DB::table('users')  
+           ->where(['id'=>  $uid])
+           ->get(); 
+          return view('pages.account.address',compact('address','customer_info'));
+
+        }else{
+          return redirect('login');
+         }
+      }
       public function addnewaddress(Request $request){
         if(session()->has('loggedin')){
             $uid=session()->get('USER_ID');  
@@ -170,55 +185,122 @@ class UserController extends Controller
           $rules=[
             'firstname'=>'required|max:20',
             'lastname'=>'required|max:20',
-            'email'=>'required|email',
-            'telephone'=>'required|max:11',
+          
+            'company'=>'required|max:50',
+            'address_1'=>'required|max:50',
+            'address_2'=>'required|max:50',
+            'country_id'=>'required|max:11',
+            'city'=>'required|max:11',
+            'postcode'=>'required|max:11',
+            'zone_id'=>'required|max:11',
+          
             
           ]; 
           
           $this->validate( $request,$rules);
-            $address = new Checkout();
+
+          
+            $address = new Address();
             $address->uid=$uid;
             $address->f_name= $request->firstname;
             $address->l_name= $request->lastname;
-            $address->company= $request->company;     $address->address_1= $request->address_1;       
+            $address->company= $request->company; 
+            $address->address_1= $request->address_1;       
             $address->address_2= $request->address_2;      
             
-            $address->mobile= $request->telephone;       
-            $address->email= $request->email; 
-            $address->country= $request->country_id; 
-            $address->city= $request->city;       
+      
+            $address->country_id= $request->country_id;
             $address->postcode= $request->postcode;       
-                 
-            $address->zone= $request->zone_id;
-            $address->comment= $request->comment;       
-            $address->payment_method = $request->payment_method;       
-            $address->shipping_method = $request->shipping_method;  $address->address_type= $request->default;     
+            $address->city= $request->city;
+            $address->zone_id= $request->zone_id;
+            $address->address_type= $request->default;     
             $address->save();
             Session::flash('msg','add new address successfully ');
-           
+           	
+
            
             
             $customer_info=DB::table('users')  
             ->where(['id'=>  $uid])
             ->get(); 
             
-            return view('pages.account.address',compact('address','customer_info'));
+            return redirect('account/address');
           
         }else{
               return redirect('login');
              }
       }
 
+      public function del_address($id){
+     
+        if(session()->has('loggedin')){
+          $uid=session()->get('USER_ID');       
+          
+          $wishlist=DB::table('address')       
+          ->where(['uid'=>  $uid])
+          ->where(['id'=>  $id])       
+          ->delete(); 
+         
+        }
+        return redirect ('account/address');
+    
+      }
+      public function edit_address($id){
+
+        if(session()->has('loggedin')){
+            $uid=session()->get('USER_ID'); 
+            $address = Address::find($id);
+
+          $customer_info=DB::table('users')  
+          ->where(['id'=>  $uid])
+          ->get(); 
+          return view('pages.account.editaddress',compact('address','customer_info'));          
+         }else{
+              return redirect('login');
+         }
 
 
+      }
+
+      public function edit_address_submit(Request $request){
+        
+        if(session()->has('loggedin')){
+          $uid=session()->get('USER_ID'); 
+          $edit_address=DB::table('address')
+          ->where('uid','=' ,$uid)
+          ->where('id','=',$request->id)
+          ->update(
+                    ['f_name'=>$request->firstname,
+                    'l_name'=> $request->lastname,
+                    'company'=> $request->company,
+                    'address_1'=> $request->address_1, 
+                    'address_2'=> $request->address_2, 
+                    'city'=> $request->city,
+                    'postcode'=> $request->postcode,
+                    'country_id'=> $request->country_id,
+                    'zone_id'=> $request->zone_id, 
+                    'address_type'=> $request->default]
+                  );
+
+
+
+      $customer_info=DB::table('users')  
+      ->where(['id'=>  $uid])
+      ->get(); 
+      return redirect('account/address');          
+        }else{
+          return redirect('login');
+        }
+
+      }
 
       public function order(){
         if(session()->has('loggedin')){
         $uid=session()->get('USER_ID');
         $orders =DB::table('orders') 
-        ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid') 
+        ->leftjoin('products','products.id' ,'=', 'orders.pid') 
         ->where('uid','=', $uid) 
-        ->select('producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.pid','orders.status')   
+        ->select('products.product_name','products.product_price','products.product_image','orders.id','orders.pid','orders.status')   
          ->get(); 
 
          $customer_info=DB::table('users')  
@@ -234,11 +316,18 @@ class UserController extends Controller
       public function order_info($id){
         if(session()->has('loggedin')){
         $uid=session()->get('USER_ID');
-        $order_info=DB::table('orders') 
-        ->leftjoin('producttb','producttb.id' ,'=', 'orders.pid')      
-        ->where('pid','=', $id) 
-        ->distinct()->select('producttb.id','producttb.product_name','producttb.product_price','producttb.product_image','orders.id','orders.status')   
-        ->get(); 
+        $order_info =DB::table('orders') 
+        ->leftjoin('products','products.id' ,'=', 'orders.pid')
+      
+        ->leftjoin('address','address.uid' ,'=', 'orders.uid') 
+        
+        ->where('orders.uid','=', $uid) 
+        ->where('orders.pid','=', $id) 
+        ->select('products.*','orders.*','address.*')   
+         ->get();  
+       
+
+
 
          $customer_info=DB::table('users')  
          ->where(['id'=>  $uid])
@@ -276,9 +365,9 @@ class UserController extends Controller
           
 
           $wishlist=DB::table('wishlist')
-          ->leftjoin('producttb','producttb.id' ,'=','wishlist.pid')
+          ->leftjoin('products','products.id' ,'=','wishlist.pid')
           ->where(['uid'=>  $uid])
-          ->select('producttb.*','wishlist.*')
+          ->select('products.*','wishlist.*')
           ->get(); 
           $customer_info=DB::table('users') 
           ->where(['id'=>  $uid])
@@ -307,16 +396,16 @@ class UserController extends Controller
 
     public function checkout_process(Request $request){
        
-        $request->validate([
-            'fristname' => 'required|max:55',
-            'lastname' => 'required',
-            'address' => 'required',
-            'mobile' => 'required',
-            'email' => 'required',
-            'city' => 'required',
-            'zone' => 'required',
-            'comment' => 'required'
-        ]);
+        // $request->validate([
+        //     'fristname' => 'required|max:55',
+        //     'lastname' => 'required',
+        //     'address' => 'required',
+        //     'mobile' => 'required',
+        //     'email' => 'required',
+        //     'city' => 'required',
+        //     'zone' => 'required',
+        //     'comment' => 'required'
+        // ]);
 
      
       

@@ -45,7 +45,7 @@
 					<?php
                     if(isset($_GET['id']) && !empty($_GET['id'])){
                             $id = $_GET['id'];
-                    $query = "SELECT DISTINCT(product_brand) FROM producttb WHERE component_id=$id ORDER BY id ASC ";
+                    $query = "SELECT DISTINCT(product_brand) FROM products WHERE component_id=$id ORDER BY id ASC ";
                     $statement = $connect->prepare($query);
                     $statement->execute();
                     $result = $statement->fetchAll();
@@ -73,7 +73,7 @@
                     <?php
                         if(isset($_GET['id']) && !empty($_GET['id'])){
                                 $id = $_GET['id'];
-                        $query = "SELECT DISTINCT(product_ram) FROM producttb WHERE component_id=$id ORDER BY product_ram DESC
+                        $query = "SELECT DISTINCT(product_ram) FROM products WHERE component_id=$id ORDER BY product_ram DESC
                         ";
                         $statement = $connect->prepare($query);
                         $statement->execute();
@@ -100,7 +100,7 @@
               <?php
                     if(isset($_GET['id']) && !empty($_GET['id'])){
                     $id = $_GET['id'];
-                    $query = "SELECT DISTINCT(product_processor) FROM producttb WHERE component_id=$id ORDER BY product_processor DESC
+                    $query = "SELECT DISTINCT(product_processor) FROM products WHERE component_id=$id ORDER BY product_processor DESC
                     ";
                     $statement = $connect->prepare($query);
                     $statement->execute();
@@ -136,7 +136,7 @@
                     <?php
                     if(isset($_GET['id']) && !empty($_GET['id'])){
                     $id = $_GET['id'];
-                    $query = "SELECT DISTINCT(product_price) FROM producttb WHERE component_id=$id ORDER BY product_price ASC";
+                    $query = "SELECT DISTINCT(product_price) FROM products WHERE component_id=$id ORDER BY product_price ASC";
                     $statement = $connect->prepare($query);
                     $statement->execute();
                     $result = $statement->fetchAll();

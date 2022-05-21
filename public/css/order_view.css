@@ -68,6 +68,9 @@
 .bg-bt-gray .container.ac-layout .row .col-md-8 .ws-box .g-box .row .col-md-6 .m-t-30 {
     margin-top: 30px;
 }
+.bg-bt-gray .container.ac-layout .row .col-md-8 .ws-box .g-box .row .col-md-6 address {
+    text-transform: capitalize;
+}
 .bg-bt-gray .container.ac-layout .row .col-md-8 .ws-box .g-box .row table {
     width: 100%;
 }

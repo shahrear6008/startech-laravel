@@ -4,7 +4,7 @@
 
 
 <div class="ac-title">
-    <a href="account"><span class="material-icons">arrow_back</span></a>
+    <a href="{{url('account/profile')}}"><span class="material-icons">arrow_back</span></a>
     <h1>Save Your PC</h1></div>
        <form action="{{url('savepc_submit')}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
 

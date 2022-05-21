@@ -4,7 +4,7 @@
 @include('pages.account.header')
 @include('pages.account.nav')
 
-<div class="ac-title"><a href="account"><span class="material-icons">arrow_back</span></a><h1>My Account Information</h1></div>
+<div class="ac-title"><a href="{{url('account/address')}}"><span class="material-icons">arrow_back</span></a><h1>My Account Information</h1></div>
 @foreach($customer_info as $row)
 <form action="{{url('edit_profile')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
       @csrf

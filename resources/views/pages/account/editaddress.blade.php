@@ -5,43 +5,50 @@
 @include('pages.account.nav')
 <div class="container ac-layout before-login">
   <div class="ac-title">
-    <a href="address">
+    <a href="{{url('account/address')}}">
       <span class="material-icons">arrow_back</span>
     </a>
     <h1>Add New Address</h1>
   </div>
-  <div class="ac-title-help-text">Please enter the required details to add a new address. </div>
-  <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+  <div class="ac-title-help-text">
+    Please enter the required details to add a new address.
+   </div>
+
+
+
+  <form action="{{url('edit_address')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+    @csrf
+    <input type="hidden" name="id" value="{{$address->id}}">
     <div class="multiple-form-group">
       <div class="form-group required">
         <label for="input-firstname">First Name</label>
-        <input type="text" name="firstname" value="<?php echo $r['f_name'];?>" placeholder="First Name" id="input-firstname" class="form-control">
+        <input type="text" name="firstname" value="{{$address->f_name}}" placeholder="First Name" id="input-firstname" class="form-control">
       </div>
       <div class="form-group required">
         <label for="input-lastname">Last Name</label>
-        <input type="text" name="lastname" value="<?php echo  $r['l_name'];?>" placeholder="Last Name" id="input-lastname" class="form-control">
+        <input type="text" name="lastname" value="{{$address->l_name}}" placeholder="Last Name" id="input-lastname" class="form-control">
       </div>
     </div>
     <div class="form-group">
       <label for="input-company">Company</label>
-      <input type="text" name="company" value="<?php echo $r['company'];?>" placeholder="Company" id="input-company" class="form-control">
+      <input type="text" name="company" value="{{$address->company}}" placeholder="Company" id="input-company" class="form-control">
     </div>
     <div class="form-group required">
       <label for="input-address-1">Address 1</label>
-      <input type="text" name="address_1" value="<?php echo $r['address_1'];?>" placeholder="Address 1" id="input-address-1" class="form-control">
+      <input type="text" name="address_1" value="{{$address->Address_1}}" placeholder="Address 1" id="input-address-1" class="form-control">
     </div>
     <div class="form-group">
       <label for="input-address-2">Address 2</label>
-      <input type="text" name="address_2" value="<?php echo $r['address_2'];?>" placeholder="Address 2" id="input-address-2" class="form-control">
+      <input type="text" name="address_2" value="{{$address->Address_2}}" placeholder="Address 2" id="input-address-2" class="form-control">
     </div>
     <div class="multiple-form-group">
       <div class="form-group required">
         <label for="input-city">City</label>
-        <input type="text" name="city" value="<?php echo $r['city'];?>" placeholder="City" id="input-city" class="form-control">
+        <input type="text" name="city" value="{{$address->city}}" placeholder="City" id="input-city" class="form-control">
       </div>
       <div class="form-group required">
         <label for="input-postcode">Post Code</label>
-        <input type="text" name="postcode" value="<?php echo $r['postcode'];?>" placeholder="Post Code" id="input-postcode" class="form-control">
+        <input type="number" name="postcode" value="{{$address->postcode}}" placeholder="Post Code" id="input-postcode" class="form-control">
       </div>
     </div>
     <div class="multiple-form-group">

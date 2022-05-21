@@ -31,7 +31,7 @@
         </div>
         <div class="form-group required">
           <label for="input-text">Your Review</label>
-          <textarea name="text" id="input-text" placeholder="Your Review" class="form-input"></textarea>
+          <textarea name="text" id="input-text" placeholder="Your Review" class="form-input" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a class="btn st-outline" href="/">Back</a>

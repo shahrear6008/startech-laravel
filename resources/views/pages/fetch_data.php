@@ -5,7 +5,7 @@
  if(isset($_POST["action"])){
 	// if(isset($_GET['id']) && !empty($_GET['id'])){
 	// 	$id = $_GET['id'];
-		$query = "SELECT * FROM producttb WHERE component_id=''";
+		$query = "SELECT * FROM products WHERE component_id=''";
 			
 
 	if(isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"]))

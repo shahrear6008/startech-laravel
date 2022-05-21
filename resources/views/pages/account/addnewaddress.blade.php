@@ -6,7 +6,7 @@
 
 <div class="container ac-layout before-login">
   <div class="ac-title">
-    <a href="address">
+    <a href="{{url('account/address')}}">
       <span class="material-icons">arrow_back</span>
     </a>
     <h1>Add New Address</h1>

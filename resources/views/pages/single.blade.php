@@ -37,13 +37,18 @@
    
       <div class="qq_action">
         <div class="rqs">
-          <div class="review"> 0 Review(s) </div>
-          <div class="que"> 0 Answered Question(s) </div>
-          <div class="share_on">
-            <span> Share:</span>
-            <i class="material-icons">facebook</i>
-           
+          <div class="review"> 
+              @if(count($reviews) > 0)
+                 {{count($reviews)}} Review(s)
+               @else
+                0 Review(s) 
+               @endif 
           </div>
+          <div class="que"> 0 Answered Question(s) </div>
+          <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.startech.com.bd%2Fteam-t-force-tuf-gaming-8gb-ram-1tb-ssd-bundle" class="share_on">
+            <span> Share:</span>
+            <i class="material-icons">facebook</i>           
+          </a>
         </div>
         <div class="option">
           <a href="{{url('add_wish_list/'.$details['id'])}}" style="color:unset" class="op_1">
@@ -139,11 +144,17 @@
           </form>
         </div>       
       </div>
-     
+    </div>
+  </div>
+  </div>
+</section>
 
+<!-- part-3 -->
 
-      <div>    
-        <ul class="nav_b">
+<section class="pd-full">
+  <div class="container">
+  <div class="navs">    
+        <ul class="nav">
           <li date_area="specification">
             Specification 
           </li>
@@ -158,13 +169,6 @@
           </li>
         </ul>
       </div>
-    </div>
-  </div>
-  </div>
-</section><!-- part-3 -->
-
-<section>
-  <div class="container">
    <div class="discription ">
       <div class="sidebar_left">
         <div id="specification" class="specification_text_area">
@@ -242,11 +246,20 @@
         </div>
         <div id="reviews" class="Question">
           <div class="Questions">
-            <h3> Reviews (0)
+         
+            <h3> 
+               @if(count($reviews) > 0)
+                  Reviews ({{count($reviews)}})
+               @else
+                  Reviews (0)
+               @endif
               <br> <small> Get specific details about this product from customers who own it.</small>
             </h3>
             <a href="{{url('review/'.$details->id)}}" class=" btn st-outline"> Write a Review </a>
           </div>
+
+          @if(count($reviews)>0)
+          @foreach( $reviews as $row)
           <div id="review">
             <div class="review-wrap">
               <div class="review-author">
@@ -258,18 +271,20 @@
                   <span class="material-icons">star</span>
                 </span>
               </div>
-              <p class="review">One of the best Motherboard Processor Combo of AMD ever. Thank you Star tech.</p>
-              <p class="author">By <span class="name">Shuvo Choudhury</span> on 16 May 2022 </p>
+              <p class="review">{{$row->text}}</p>
+              <p class="author">By <span class="name">{{$row->fname}} {{$row->lname}}</span> on {{$row->created_at}} </p>
             </div>
             <div class="text-center"></div>
           </div>
-
-
+        @endforeach
+        @else
           <div class="message">
             <div class="m_icon"> <i class="material-icons">assignment</i> </div>
             <h5>
               This product has no reviews yet. Be the first one to write a review.
-            </h5> </div>
+            </h5> 
+          </div>
+        @endif
         </div>
         
 

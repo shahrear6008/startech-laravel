@@ -13,7 +13,7 @@
               Your password do not match try again
             </div> -->
 
-<div class="ac-title"><a href="{{('account/profile')}}"><span class="material-icons">arrow_back</span></a><h1>Change Password</h1></div>
+<div class="ac-title"><a href="{{url('account/profile')}}"><span class="material-icons">arrow_back</span></a><h1>Change Password</h1></div>
 
 <div class="ac-title-help-text">Please type and confirm to change your current password.</div>
 @if(Session::has('cp_error'))
